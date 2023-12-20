@@ -12,6 +12,10 @@ terraform {
       source  = "linode/linode"
       version = "2.9.1"
     }
+    doppler = {
+      source  = "DopplerHQ/doppler"
+      version = "1.3.0"
+    }
   }
 }
 
@@ -19,8 +23,13 @@ provider "linode" {
   token = var.linode_token
 }
 
-variable "bucket_name" {
-  type = string
+provider "doppler" {
+  doppler_token = var.doppler_token
+}
+
+variable "doppler_token" {
+  type      = string
+  sensitive = true
 }
 
 variable "linode_token" {
@@ -28,18 +37,43 @@ variable "linode_token" {
   sensitive = true
 }
 
-locals {
-  cluster_id = data.linode_object_storage_cluster.this.id
+variable "doppler_config" {
+  type = string
+}
+
+variable "doppler_project" {
+  type = string
 }
 
 data "linode_object_storage_cluster" "this" {
   id = "eu-central-1"
 }
 
+data "doppler_secrets" "this" {}
+
+locals {
+  cluster_id  = data.linode_object_storage_cluster.this.id
+  bucket_name = data.doppler_secrets.this.map.BUCKET_NAME
+}
+
+resource "doppler_secret" "bucket_region" {
+  config  = var.doppler_config
+  project = var.doppler_project
+  name    = "BUCKET_REGION"
+  value   = local.cluster_id
+}
+
+resource "doppler_secret" "bucket_name" {
+  config  = var.doppler_config
+  project = var.doppler_project
+  name    = "BUCKET_NAME"
+  value   = "theutz-com"
+}
+
 resource "linode_object_storage_key" "this" {
   label = "theutz-com-tf"
   bucket_access {
-    bucket_name = var.bucket_name
+    bucket_name = local.bucket_name
     cluster     = local.cluster_id
     permissions = "read_write"
   }
@@ -49,7 +83,7 @@ resource "linode_object_storage_bucket" "this" {
   access_key = linode_object_storage_key.this.access_key
   secret_key = linode_object_storage_key.this.secret_key
 
-  label   = var.bucket_name
+  label   = local.bucket_name
   cluster = local.cluster_id
 
   acl          = "public-read"
