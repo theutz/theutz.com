@@ -16,6 +16,10 @@ terraform {
       source  = "DopplerHQ/doppler"
       version = "1.3.0"
     }
+    github = {
+      source  = "integrations/github"
+      version = "~> 5.0"
+    }
   }
 }
 
@@ -27,12 +31,21 @@ provider "doppler" {
   doppler_token = var.doppler_token
 }
 
+provider "github" {
+  token = var.github_token
+}
+
 variable "doppler_token" {
   type      = string
   sensitive = true
 }
 
 variable "linode_token" {
+  type      = string
+  sensitive = true
+}
+
+variable "github_token" {
   type      = string
   sensitive = true
 }
@@ -51,6 +64,10 @@ data "linode_object_storage_cluster" "this" {
 
 data "doppler_secrets" "this" {}
 
+data "github_user" "current" {
+  username = "theutz"
+}
+
 locals {
   cluster_id  = data.linode_object_storage_cluster.this.id
   bucket_name = data.doppler_secrets.this.map.BUCKET_NAME
@@ -68,6 +85,15 @@ resource "doppler_secret" "bucket_name" {
   project = var.doppler_project
   name    = "BUCKET_NAME"
   value   = "theutz-com"
+}
+
+resource "github_repository" "this" {
+  name = "theutz.com"
+}
+
+resource "github_repository_environment" "prd" {
+  environment = "production"
+  repository  = github_repository.this.name
 }
 
 resource "linode_object_storage_key" "this" {
