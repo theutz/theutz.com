@@ -1,0 +1,2 @@
+brew "hugo"
+brew "just"
