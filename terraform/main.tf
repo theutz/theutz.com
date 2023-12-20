@@ -88,7 +88,7 @@ resource "doppler_secret" "bucket_name" {
 }
 
 resource "github_repository_environment" "prd" {
-  environment = "production"
+  environment = "prd"
   repository  = "theutz.com"
 }
 
