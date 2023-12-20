@@ -87,13 +87,9 @@ resource "doppler_secret" "bucket_name" {
   value   = "theutz-com"
 }
 
-resource "github_repository" "this" {
-  name = "theutz.com"
-}
-
 resource "github_repository_environment" "prd" {
   environment = "production"
-  repository  = github_repository.this.name
+  repository  = "theutz.com"
 }
 
 resource "linode_object_storage_key" "this" {
