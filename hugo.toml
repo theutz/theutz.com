@@ -1,4 +1,3 @@
 baseURL = 'https://theutz.com/'
 languageCode = 'en-us'
 title = 'theutz.com'
-theme = 'ananke'
