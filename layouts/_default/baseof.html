@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    {{- block "title" . }}{{ .Site.Title }}{{ end -}}
+  </title>
+</head>
+
+<body>
+  <header>
+    {{ block "header" . }}{{ end }}
+  </header>
+  <main>
+    {{ block "main" . -}}{{ end }}
+  </main>
+  <footer>
+    {{- block "footer" . }}{{ end -}}
+  </footer>
+</body>
+
+</html>
