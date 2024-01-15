@@ -32,7 +32,7 @@ open:
 
 # run hugo dev server
 hugo-watch:
-  hugo server
+  hugo server --disableFastRender
 
 #
 # tailwind
@@ -47,7 +47,7 @@ tailwind-watch:
     --input {{tw_in}} \
     --output {{tw_out}} \
     --watch=always \
-    -- minify
+    --minify
 
 # build all tailwind assets
 tailwind-build:

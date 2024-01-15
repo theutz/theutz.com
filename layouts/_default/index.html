@@ -2,9 +2,10 @@
 {{ .Title }} - {{ .Site.Title }}
 {{ end }}
 
-{{ define "header" }}
-<h1>{{ .Title }}</h1>
-{{ end }}
 {{ define "main" }}
-{{- .Content -}}
+<main class="container mx-auto px-4">
+  <div class="prose">
+    {{ .Content }}
+  </div>
+</main>
 {{ end }}

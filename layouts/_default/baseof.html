@@ -7,20 +7,23 @@
   <title>
     {{- block "title" . }}{{ .Site.Title }}{{ end -}}
   </title>
-  {{ $style := resources.Get "css/style.css" }}
-  <link rel="stylesheet" href="{{ $style.Permalink }}">
+  {{ $style := resources.Get "css/style.css" | resources.Fingerprint }}
+  <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
 </head>
 
 <body class="font-sans">
-  <header>
-    {{ block "header" . }}{{ end }}
-  </header>
+  {{ block "header" . }}
+  {{ partial "header.html" . }}
+  {{ end }}
+
+  {{ block "main" . }}
   <main>
-    {{ block "main" . -}}{{ end }}
+    <h1>No content</h1>
   </main>
-  <footer>
-    {{- block "footer" . }}{{ end -}}
-  </footer>
+  {{ end }}
+
+  {{ block "footer" . }}
+  {{ end }}
 </body>
 
 </html>
