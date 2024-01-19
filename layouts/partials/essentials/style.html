@@ -1,19 +1,15 @@
 {{ $styles := resources.Get "css/main.css" }}
-{{ $styles = $styles | resources.PostCSS}}
+{{ $styles = $styles | resources.PostCSS }}
 
 {{ if hugo.IsProduction }}
   {{ $styles = $styles 
-    | resources.ExecuteAsTemplate "css/style.css" . 
+    | resources.ExecuteAsTemplate "css/style.css" .
     | minify 
     | fingerprint
     | resources.PostProcess
   }} 
 {{ else }}
-  {{ $styles = $styles 
-    | resources.ExecuteAsTemplate "css/style.css" . 
-    | fingerprint 
-    | resources.PostProcess
-  }} 
+  {{ $styles = $styles | resources.ExecuteAsTemplate "css/style.css" . }} 
 {{ end }}
 
 <link

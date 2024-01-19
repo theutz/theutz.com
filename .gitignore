@@ -4,3 +4,4 @@ resources/_gen
 terraform/.terraform
 node_modules
 assets/css/style.css
+hugo_stats.json
