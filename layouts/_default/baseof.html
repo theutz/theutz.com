@@ -1,19 +1,14 @@
 <!doctype html>
-<html>
+<html lang='{{ site.LanguageCode | default "en-US" }}'>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>
-    {{- block "title" . }}{{ .Site.Title }}{{ end -}}
-  </title>
-  {{ $style := resources.Get "css/style.css" | resources.Fingerprint }}
-  <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
+  {{ partial "essentials/head.html" . }}
+  {{ partial "essentials/style.html" . }}
 </head>
 
 <body class="font-sans dark:text-white dark:bg-black">
   {{ block "header" . }}
-  {{ partial "header.html" . }}
+  {{ partial "essentials/header.html" . }}
   {{ end }}
 
   {{ block "main" . }}
@@ -22,7 +17,12 @@
   </main>
   {{ end }}
 
-  {{ block "footer" . }}
+  {{ if hugo.IsProduction }}
+  {{ partialCached "essentials/footer.html" . }}
+  {{ partialCached "essentials/script.html" . }}
+  {{ else }}
+  {{ partial "essentials/footer.html" . }}
+  {{ partial "essentials/script.html" . }}
   {{ end }}
 </body>
 

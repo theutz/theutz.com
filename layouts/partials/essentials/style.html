@@ -1,0 +1,2 @@
+{{ $style := resources.Get "css/style.css" | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
