@@ -69,10 +69,11 @@
   start: 2018-01-01
 
 - city: Turku
+  state: Varsinais-Suomi
   country: Finland
   start: 2019-01-01
 
-- neighborhood: Değirmendere
-  district: Gölcük
-  city: Kocaeli
+- city: Gölcük
+  state: Kocaeli
   country: Türkiye
+  start: 2022-01-01
