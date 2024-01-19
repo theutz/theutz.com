@@ -1,0 +1,20 @@
+baseURL: "https://theutz.com/"
+title: theutz.com
+defaultContentLanguage: "en"
+languages:
+  en:
+    disabled: false
+    languageCode: "en-US"
+    languageDirection: "ltr"
+    languageName: "English"
+    title: theutz.com
+    weight: 1
+    contentDir: "content/en"
+  tr:
+    disabled: false
+    languageCode: "tr-TR"
+    languageDirection: "ltr"
+    languageName: "Türkçe"
+    title: theutz.com
+    weight: 2
+    contentDir: "content/tr"
