@@ -1,6 +1,9 @@
 <!doctype html>
 <html
   lang="{{ site.LanguageCode | default "en-US" }}"
+  x-data="{
+    isDarkMode: $persist(window.matchMedia('(prefers-color-scheme: dark)').matches)
+  }"
 >
 
 <head>
