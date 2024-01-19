@@ -1,0 +1,32 @@
+- name:
+    first: Michael
+    middle: Robert
+    last: Utz
+    full: Michael Robert Utz
+    name: Michael Utz
+  relation: me
+  family_of_origin: true
+  immediate_family: true
+  birth:
+    date: 1986-04-22
+    place:
+      city: Bellevue
+      state: Washington
+      country: United States of America
+  nationality: United States of America
+
+- name:
+    first: Begüm
+    last: Utz
+    maiden: Erdoğan
+    full: Begüm Utz
+    name: Begüm Utz
+  family_of_origin: false
+  immediate_family: true
+  relation: wife
+  birth:
+    date: 1984-10-27
+    place:
+      city: Ankara
+      country: Türkiye
+  nationality: Türkiye

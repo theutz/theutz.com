@@ -1,0 +1,78 @@
+- city: Redmond
+  state: Washington
+  country: United States of America
+  start: 1986-04-22
+
+- city: Indianapolis
+  state: Indiana
+  country: United States of America
+  start: 1990-01-01
+
+- city: Wilmington
+  state: Delaware
+  country: United States of America
+  start: 1992-01-01
+
+- city: Redmond
+  state: Washington
+  country: United States of America
+  start: 1994-01-01
+
+- city: Issaquah
+  state: Washington
+  country: United States of America
+  start: 1996-01-01
+
+- city: Sacramento
+  state: California
+  country: United States of America
+  start: 2000-07-01
+
+- city: Yakima
+  state: Washington
+  country: United States of America
+  start: 2002-07-01
+
+- city: Kirkland
+  state: Washington
+  country: United States of America
+  start: 2004-08-20
+
+- city: Bellingham
+  state: Washington
+  country: United States of America
+  start: 2009-08-01
+
+- city: Seattle
+  state: Washington
+  country: United States of America
+  start: 2010-02-01
+
+- city: Davenport
+  state: Iowa
+  country: United States of America
+  start: 2011-01-01
+
+- city: Bellingham
+  state: Washington
+  country: United States of America
+  start: 2013-02-01
+
+- city: Nashville
+  state: Tennessee
+  country: United States of America
+  start: 2014-01-01
+
+- city: Helsinki
+  state: Uusimaa
+  country: Finland
+  start: 2018-01-01
+
+- city: Turku
+  country: Finland
+  start: 2019-01-01
+
+- neighborhood: Değirmendere
+  district: Gölcük
+  city: Kocaeli
+  country: Türkiye

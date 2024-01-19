@@ -1,0 +1,8 @@
+{{ $data := index .Site.Data "residences" }}
+{{ $cities := slice }}
+
+{{ range $data }}
+{{ $cities = $cities | append .city }}
+{{ end }}
+
+{{- $cities | uniq | len -}}
