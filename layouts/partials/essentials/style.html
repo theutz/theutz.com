@@ -1,6 +1,23 @@
-{{ $style := resources.Get "css/style.css" | resources.Fingerprint }}
+{{ $styles := resources.Get "css/main.css" }}
+{{ $styles = $styles | resources.PostCSS}}
+
+{{ if hugo.IsProduction }}
+  {{ $styles = $styles 
+    | resources.ExecuteAsTemplate "css/style.css" . 
+    | minify 
+    | fingerprint
+    | resources.PostProcess
+  }} 
+{{ else }}
+  {{ $styles = $styles 
+    | resources.ExecuteAsTemplate "css/style.css" . 
+    | fingerprint 
+    | resources.PostProcess
+  }} 
+{{ end }}
+
 <link
   rel="stylesheet"
-  href="{{ $style.Permalink }}"
-  integrity="{{ $style.Data.Integrity }}"
+  href="{{ $styles.RelPermalink }}"
+  integrity="{{ $styles.Data.Integrity }}"
 >
